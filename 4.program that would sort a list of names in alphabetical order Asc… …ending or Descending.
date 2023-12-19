@@ -1,0 +1,60 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class NameSorter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Enter names (one per line, type 'done' to finish):");
+        String[] names = readNames(scanner);
+
+        System.out.print("Enter sorting order (A for Ascending, D for Descending): ");
+        char sortOrder = scanner.next().charAt(0);
+
+
+        sortNames(names, sortOrder);
+
+        // Output sorted names
+        System.out.println("Sorted Names:");
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
+
+    private static String[] readNames(Scanner scanner) {
+        String input;
+        StringBuilder inputBuilder = new StringBuilder();
+
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("done")) {
+            inputBuilder.append(input).append("\n");
+        }
+
+        return inputBuilder.toString().trim().split("\n");
+    }
+
+    private static void sortNames(String[] names, char sortOrder) {
+        Arrays.sort(names);
+
+        if (sortOrder == 'D' || sortOrder == 'd') {
+
+            reverseArray(names);
+        }
+    }
+
+    private static void reverseArray(String[] array) {
+        int start = 0;
+        int end = array.length - 1;
+
+        while (start < end) {
+
+            String temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+
+
+            start++;
+            end--;
+        }
+    }
+}
