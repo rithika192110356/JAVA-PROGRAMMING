@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class UsernameValidation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a username: ");
+        String username = scanner.nextLine();
+
+        if (isValidUsername(username)) {
+            System.out.println("Valid username: " + username);
+        } else {
+            System.out.println("Invalid username. Please follow the specified rules.");
+        }
+    }
+
+    private static boolean isValidUsername(String username) {
+        (between 3 and 16 characters)
+        if (username.length() < 3 || username.length() > 16) {
+            return false;
+        }
+
+        // Check allowed characters (alphanumeric and underscore)
+        return Pattern.matches("^[a-zA-Z0-9_]+$", username);
+    }
+}
