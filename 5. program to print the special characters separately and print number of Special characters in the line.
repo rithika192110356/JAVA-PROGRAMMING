@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class SpecialCharacterCounter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter a line of text: ");
+        String inputLine = scanner.nextLine();
+
+        /
+        int specialCharCount = printSpecialCharacters(inputLine);
+
+
+        System.out.println("Number of Special Characters: " + specialCharCount);
+    }
+
+    private static int printSpecialCharacters(String input) {
+        int specialCharCount = 0;
+
+        System.out.println("Special Characters:");
+
+        for (int i = 0; i < input.length(); i++) {
+            char currentChar = input.charAt(i);
+
+            if (!Character.isLetterOrDigit(currentChar) && !Character.isWhitespace(currentChar)) {
+
+                System.out.println(currentChar);
+                specialCharCount++;
+            }
+        }
+
+        return specialCharCount;
+    }
+}
