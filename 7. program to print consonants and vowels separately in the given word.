@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class ConsonantVowelSeparator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter a word: ");
+        String inputWord = scanner.nextLine();
+
+        String consonants = separateConsonants(inputWord);
+        String vowels = separateVowels(inputWord);
+
+        System.out.println("Consonants: " + consonants);
+        System.out.println("Vowels: " + vowels);
+    }
+
+    private static String separateConsonants(String word) {
+        StringBuilder consonantsBuilder = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
+
+            if (!isVowel(currentChar)) {
+
+                consonantsBuilder.append(currentChar).append(" ");
+            }
+        }
+
+        return consonantsBuilder.toString().trim();
+    }
+
+    private static String separateVowels(String word) {
+        StringBuilder vowelsBuilder = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
+
+            if (isVowel(currentChar)) {
+
+                vowelsBuilder.append(currentChar).append(" ");
+            }
+        }
+
+        return vowelsBuilder.toString().trim();
+    }
+
+    private static boolean isVowel(char ch) {
+        String vowels = "aeiouAEIOU";
+        return vowels.indexOf(ch) != -1;
+    }
+}
